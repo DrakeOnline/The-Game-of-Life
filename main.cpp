@@ -3,6 +3,6 @@
 
 
 int main() {
-    DrakeOnline::Game(1024, 576, "The Game of Life");
+    DrakeOnline::Game(1280, 720, "The Game of Life");
     return EXIT_SUCCESS;
 }
