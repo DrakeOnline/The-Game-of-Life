@@ -1,8 +1,7 @@
 
-#include <sstream>
-#include <iostream>
 #include "./../include/SplashState.hpp"
-// #include "./../include/GameState.hpp"
+#include "./../include/GameState.hpp"
+
 
 namespace DrakeOnline {
     // ======================CONSTRUCTORS=======================
@@ -30,15 +29,19 @@ namespace DrakeOnline {
     void SplashState::Update(float deltaTime) {
         static bool dissapearing    = false;
         static int transparency     = 0;
+        static bool finished        = false;
 
         // Intro done, go to next game state
-        if (dissapearing && transparency == 0 ) { _data->window.close(); }
+        if (dissapearing && transparency == 0 ) {
+            finished = true;
+            _data->machine.AddState(StateRef(new GameState(this->_data)));
+        }
 
         // Once it hits full transparency, start the dissapearing process
         if (transparency == 255) { dissapearing = true; }
 
         // Fast and small changes
-        if (_clock.getElapsedTime().asSeconds() >= 0.002f) {
+        if (_clock.getElapsedTime().asSeconds() >= 0.002f && (!finished)) {
 
             // Dissapear faster than it appears
             if (dissapearing) { transparency-=5; }
@@ -56,4 +59,5 @@ namespace DrakeOnline {
         _data->window.draw(_background);
         _data->window.display();
     }
+
 }
