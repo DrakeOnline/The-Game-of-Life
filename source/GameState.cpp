@@ -33,8 +33,7 @@ namespace DrakeOnline {
     }
 
     void GameState::Update(float deltaTime) {
-        if(_clock.getElapsedTime().asSeconds() >= 0.25) {
-             std::cout << "Running" << std::endl;
+        if(_clock.getElapsedTime().asSeconds() >= 0.1) {
             _grid.ProcessCells();
             _clock.restart();
         }

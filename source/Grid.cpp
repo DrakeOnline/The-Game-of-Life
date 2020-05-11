@@ -23,8 +23,7 @@ namespace DrakeOnline {
     }
 
     void Grid::CheckCells() {
-        int cellNumber = 0;
-
+    
         // Each row
         for(int i = 0; i < grid.size(); i++) {
             // Each column
@@ -68,11 +67,14 @@ namespace DrakeOnline {
                     && grid[i-1][j-1].alive) { ++neighbors; }
 
                 // Game of life rules
+                // If cell is alive and has less than 2 neighbors it dies
                 if(grid[i][j].alive && (neighbors < 2)) {
                     cellsToChange.push_back(&grid[i][j]);
+                // If cell is alive and has more than 3 neighbors it dies
                 } else if (grid[i][j].alive && (neighbors > 3)) {
                     cellsToChange.push_back(&grid[i][j]);
-                } else if((!grid[i][j].alive) && (neighbors == 2)) {
+                // If cell is dead and has 2 neighbors it is now alive
+                } else if((!grid[i][j].alive) && (neighbors == 3)) {
                     cellsToChange.push_back(&grid[i][j]);
                 }
 
