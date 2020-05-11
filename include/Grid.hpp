@@ -12,8 +12,13 @@ namespace DrakeOnline {
             Grid(sf::RenderWindow&);
             // =====================PUBLIC METHODS======================
             void PrintGrid();
+            void CheckCells();
+            void ChangeCells();
+            void ProcessCells();
+            void CalculateColor(Cell*);
             // ====================PUBLIC VARIABLES=====================
             std::vector<std::vector<Cell>>  grid;
+            std::vector<Cell*>              cellsToChange;
         private:
             // =====================PRIVATE METHODS=====================
             void CreateGrid();

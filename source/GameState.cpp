@@ -25,9 +25,19 @@ namespace DrakeOnline {
         while(_data->window.pollEvent(event)) {
             if(sf::Event::Closed == event.type) { _data->window.close(); }
         }
+
+        // Restart Game
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+            _data->machine.AddState(StateRef(new GameState(this->_data)));
+        }
     }
 
     void GameState::Update(float deltaTime) {
+        if(_clock.getElapsedTime().asSeconds() >= 0.25) {
+             std::cout << "Running" << std::endl;
+            _grid.ProcessCells();
+            _clock.restart();
+        }
 
     }
 
