@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 
 #include <SFML/Graphics.hpp>
 #include "State.hpp"
@@ -22,7 +22,6 @@ namespace DrakeOnline {
             GameDataRef     _data;
             sf::Clock       _clock;
             sf::Sprite      _background;
-            Grid            _grid;
     };
 
 }

@@ -15,10 +15,12 @@ namespace DrakeOnline {
         sf::Font font;
         if (font.loadFromFile(fileName)) { this->_fonts[name] = font; }
     }
+
     // Search for texture and return a reference to it
     sf::Texture&    AssetManager::GetTexture(std::string name) {
         return this->_textures.at(name);
     }
+
     // Search for font and return a reference to it
     sf::Font&       AssetManager::GetFont(std::string name) {
         return this->_fonts.at(name);

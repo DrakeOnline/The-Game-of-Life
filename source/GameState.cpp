@@ -6,7 +6,7 @@
 namespace DrakeOnline {
 
     // ======================CONSTRUCTORS=======================
-    GameState::GameState(GameDataRef data) : _data(data), _grid(_data->window) {
+    GameState::GameState(GameDataRef data) : _data(data) {
     }
 
     // =====================PUBLIC METHODS======================
@@ -34,7 +34,7 @@ namespace DrakeOnline {
 
     void GameState::Update(float deltaTime) {
         if(_clock.getElapsedTime().asSeconds() >= 0.1) {
-            _grid.ProcessCells();
+            _data->grid.ProcessCells();
             _clock.restart();
         }
 
@@ -45,9 +45,9 @@ namespace DrakeOnline {
         _data->window.clear();
         _data->window.draw(_background);
         // Draw each cell
-        for(int i = 0; i < _grid.grid.size(); i++) {
-            for(int j = 0; j < _grid.grid[i].size(); j++) {
-                _data->window.draw(_grid.grid[i][j].square);
+        for(int i = 0; i < _data->grid.cells.size(); i++) {
+            for(int j = 0; j < _data->grid.cells[i].size(); j++) {
+                _data->window.draw(_data->grid.cells[i][j].square);
             }
         }
         _data->window.display();

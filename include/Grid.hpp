@@ -9,7 +9,7 @@ namespace DrakeOnline {
     class Grid {
         public:
             // ======================CONSTRUCTORS=======================
-            Grid(sf::RenderWindow&);
+            Grid();
             // =====================PUBLIC METHODS======================
             void PrintGrid();
             void CheckCells();
@@ -17,7 +17,7 @@ namespace DrakeOnline {
             void ProcessCells();
             void CalculateColor(Cell*);
             // ====================PUBLIC VARIABLES=====================
-            std::vector<std::vector<Cell>>  grid;
+            std::vector<std::vector<Cell>>  cells;
             std::vector<Cell*>              cellsToChange;
         private:
             // =====================PRIVATE METHODS=====================
@@ -25,7 +25,6 @@ namespace DrakeOnline {
             // ====================PRIVATE VARIABLES====================
             int                     _height;
             int                     _width;
-            sf::RenderWindow&       _window;
     };
 
 }

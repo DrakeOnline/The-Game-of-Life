@@ -6,6 +6,7 @@
 #include "StateMachine.hpp"
 #include "AssetManager.hpp"
 #include "InputManager.hpp"
+#include "Grid.hpp"
 
 
 namespace DrakeOnline {
@@ -15,6 +16,7 @@ namespace DrakeOnline {
         sf::RenderWindow    window;
         AssetManager        assets;
         InputManager        input;
+        Grid                grid;
     };
 
     typedef std::shared_ptr<GameData> GameDataRef;
